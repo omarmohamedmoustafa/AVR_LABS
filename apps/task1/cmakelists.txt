@@ -1,0 +1,19 @@
+#define the minimum version of cmake
+cmake_minimum_required(VERSION 3.5)
+
+#specify the project name
+project(task1)
+
+#specify the C standard
+set(CMAKE_C_STANDARD 99)
+
+# add include directories
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/inc)
+
+# This file is to make executable file for the task1
+#specify the source file
+add_executable(task1 src/main.c)
+
+# i need to link this executable file with the library of dio we just made 5 minutes ago
+
+target_link_libraries(task1 PRIVATE dio)
