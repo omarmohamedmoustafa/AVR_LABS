@@ -1,14 +1,20 @@
 #define the minimum version of cmake
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.3)
 
 #specify the project name
-project(dio)
+project(dio C)
 
-#specify the C standard
-set(CMAKE_C_STANDARD 99)
+find_program(CMAKE_C_COMPILER NAMES avr-gcc PATHS /usr/bin)
+set(CMAKE_C_COMPILER avr-gcc)
 
-# This file is to make cmake for dio driver
-add_library(dio STATIC ${CMAKE_CURRENT_SOURCE_DIR}/dio.c)
+set(${PROJECT_NAME}_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/*.c
+)
+
+add_library(${PROJECT_NAME} STATIC "${${PROJECT_NAME}_SOURCES}")
 
 #specify the include directory
-target_include_directories(dio PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/inc)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/inc)
+
+# #specify the output directory
+# set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib)
