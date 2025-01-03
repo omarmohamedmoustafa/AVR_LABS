@@ -3,13 +3,29 @@
 #include "platform_types.h"
 
 /* Error Status Enum */
-typedef enum
-{
-    MPORT_OK,
-    MPORT_INVALID_PARAM,
-    MPORT_NOK,
-    MPORT_NULL_PTR
+typedef enum {
+	MPORT_OK,              // Operation successful
+	MPORT_NOK,             // Operation failed
+	MPORT_INVALID_PIN,     // Invalid pin number
+	MPORT_INVALID_PORT,     // Invalid port number
+	MPORT_INVALID_PIN_MODE, // invalid mode for pin
+	MPORT_INVALID_PIN_CONFIG,
+	MPORT_ERROR_INVALID_PIN,
+	MPORT_ERROR_INVALID_DIRECTION,
+	MPORT_ERROR_INVALID_MODE,
+	MPORT_ERROR_UNCHANGEABLE_MODE,
+    MPORT_INVALID_PARAM
+
 } MPORT_enuErrorStatus_t;
+
+// enum for pin modes
+typedef enum {
+	PORT_PIN_MODE_INPUT_PULLUP,
+	PORT_PIN_MODE_INPUT_PULLDOWN,
+	PORT_PIN_MODE_UART,
+	PORT_PIN_MODE_SPI,
+	// Add other modes as needed
+} MPORT_enuPinMode_t;
 
 #define MPORT_PINA0 0x00
 #define MPORT_PINA1 0x01
